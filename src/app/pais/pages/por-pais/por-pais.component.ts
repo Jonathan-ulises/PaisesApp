@@ -17,10 +17,10 @@ export class PorPaisComponent {
 
   buscar(): void {
     this.hayError = false;
-    
+
     this.paisService.buscarPais( this.query )
-      .subscribe( (respuesta) => {
-        console.log(respuesta)
+      .subscribe( (paises) => {
+        console.log(paises)
       }, (err) => {
         console.log(err);
         console.info(err);
