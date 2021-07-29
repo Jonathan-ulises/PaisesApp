@@ -3,7 +3,15 @@
 
 <div class="row">
     <div class="col">
-        <app-pais-input></app-pais-input>
+        <!--
+            el evento onEnter pertenece al componente pais-input.component, asi que
+            escuchamos el evento, cuando en el formulario de busqueda se precione enter,
+            este escuchara el evento automaticamente y ejecutara la funcion buscar, que realizara
+            la consulta a la API. A este metodo se le pasa como argumento el evento, ya que este
+            en si es el valor que se esta emitiendo en el evento (el valor de busqueda (query))
+        -->
+        <app-pais-input 
+            (onEnter)="buscar( $event )"></app-pais-input>
     </div>
 </div>
 
