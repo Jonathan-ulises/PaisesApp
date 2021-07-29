@@ -33,4 +33,9 @@ export class PorPaisComponent {
         this.paises = [];
       })
   }
+
+  sugerencias( query: string ): void {
+    this.hayError = false;
+    // TODO: CREAR SUGURENCIAS
+  }
 }

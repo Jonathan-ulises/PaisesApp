@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime } from "rxjs/operators";
 
 @Component({
   selector: 'app-pais-input',
@@ -6,12 +8,31 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styles: [
   ]
 })
-export class PaisInputComponent {
+export class PaisInputComponent implements OnInit{
 
-  @Output() onEnter: EventEmitter<string> = new EventEmitter();
+  @Output() onEnter   : EventEmitter<string> = new EventEmitter();
+  @Output() onDebounce: EventEmitter<string> = new EventEmitter();
+
+  debouncer: Subject<string> = new Subject();
+  
   query: string = '';
 
   constructor() { }
+  
+  ngOnInit(): void {
+    /*
+    Cuando se detecte que se evio un valor con next, se ejecutara el subscribe
+    */
+    this.debouncer
+      .pipe(
+        //Esta linea dice que no ejecutes el subscribe hasta que el observable deje
+        //de emitir valores durante 300 milisegundos.
+        debounceTime(300))
+      .subscribe( valor => {
+        //Activa el evento emitiendo el valor del observable del debouncer.
+        this.onDebounce.emit( valor );
+      } );
+  }
 
   buscar(): void {
     /*
@@ -19,5 +40,10 @@ export class PaisInputComponent {
     del query.
     */
     this.onEnter.emit( this.query );
+  }
+
+  teclaPresionada() {
+    //Lalla al Observable envia el query de busqueda.
+    this.debouncer.next( this.query );
   }
 }
