@@ -35,4 +35,14 @@ export class PaisService {
     return this.http.get<Country[]>(url);
   }
 
+  /**
+   * Consulta la informacion de un pais mediante su codigo.
+   * @param id Codigo del pais
+   * @returns Observable de un objeto Country
+   */
+  getPaisPorCodigoAlpha( id: string ): Observable<Country> {
+    const url = `${ this.baseURL }/alpha/${ id }`;
+    return this.http.get<Country>( url );
+  }
+
 }
