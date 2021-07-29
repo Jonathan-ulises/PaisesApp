@@ -11,13 +11,20 @@ export class PorPaisComponent {
 
 
   query: string = '';
+  hayError: boolean = false;
 
   constructor( private paisService: PaisService) { }
 
   buscar(): void {
+    this.hayError = false;
+    
     this.paisService.buscarPais( this.query )
-      .subscribe( respuesta => {
+      .subscribe( (respuesta) => {
         console.log(respuesta)
+      }, (err) => {
+        console.log(err);
+        console.info(err);
+        this.hayError = true;
       })
   }
 }
