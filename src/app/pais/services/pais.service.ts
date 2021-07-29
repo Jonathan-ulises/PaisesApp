@@ -25,5 +25,14 @@ export class PaisService {
     return this.http.get<Country[]>(url);
   }
 
+  /**
+   * Consulta capitales en la API
+   * @param query  Termino de consulta
+   * @returns Observable de lista de Country
+   */
+  buscarCapital( query: string ): Observable<Country[]> {
+    const url = `${this.baseURL}/capital/${query}`;
+    return this.http.get<Country[]>(url);
+  }
 
 }

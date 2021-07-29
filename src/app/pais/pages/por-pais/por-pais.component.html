@@ -11,7 +11,9 @@
             en si es el valor que se esta emitiendo en el evento (el valor de busqueda (query))
         -->
         <app-pais-input 
-            (onEnter)="buscar( $event )"></app-pais-input>
+            (onEnter)="buscar( $event )"
+            (onDebounce)="sugerencias( $event )"
+            placeH="Buscar Pais..."></app-pais-input>
     </div>
 </div>
 
