@@ -45,4 +45,14 @@ export class PaisService {
     return this.http.get<Country>( url );
   }
 
+  /**
+   * Consulta lista de paises por region
+   * @param region Region del mundo
+   * @returns Observable de lista de Country
+   */
+  buscarRegion( region: string ): Observable<Country[]> {
+    const url = `${ this.baseURL }/region/${ region }`;
+    return this.http.get<Country[]>(url);
+  }
+
 }
