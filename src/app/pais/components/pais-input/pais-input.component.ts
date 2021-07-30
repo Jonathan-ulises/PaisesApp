@@ -45,6 +45,10 @@ export class PaisInputComponent implements OnInit{
     this.onEnter.emit( this.query );
   }
 
+  /**
+   * Detecta el ecento de presion de las teclas al momento de escribir, detona el emiter debouncer
+   * cuando se presione una tecla.
+   */
   teclaPresionada() {
     //Lalla al Observable envia el query de busqueda.
     this.debouncer.next( this.query );
