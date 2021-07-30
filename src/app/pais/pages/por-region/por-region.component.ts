@@ -18,10 +18,17 @@ export class PorRegionComponent {
 
   constructor() { }
 
+  getClaseCSS( region: string) : string {
+    return (region === this.regionActiva) 
+      ? 'btn btn-primary' 
+        : 'btn btn-outline-primary';
+  }
+
   activarRegion( region: string ) : void {
     this.regionActiva = region;
 
     //TODO: hacer el llamada al servicio
   }
+
 
 }

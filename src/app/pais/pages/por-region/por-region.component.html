@@ -18,10 +18,13 @@
                 'btn-primary': regionActiva === region,
                 'btn-outline-primary': regionActiva !== region
             }"
+
+            [class]="propiedadCSS proveniente de TS"
+            Nos ayuda a agregar o quitar clases de un elemento HTML optienendo las propiedades desde TS. Esto hace a las clases
+            de CSS mas dinamicas.
         -->
         <button *ngFor="let region of regiones"
-                class="btn btn-outline-primary"
-                
+                [class]="getClaseCSS( region )"
                 (click)="activarRegion( region )">
             {{ region | titlecase }}
         </button>
