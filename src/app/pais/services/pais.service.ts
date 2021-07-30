@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Country } from '../interfaces/pais.interface';
 
 @Injectable({
@@ -9,6 +10,14 @@ import { Country } from '../interfaces/pais.interface';
 export class PaisService {
 
   private baseURL: string = 'https://restcountries.eu/rest/v2';
+
+  /**
+   * Filtros para optimizar la consulta
+   */
+  get getHttpParams(): HttpParams {
+    return new HttpParams()
+      .set( 'fields',  'name;capital;alpha2Code;flag;population');
+  }
 
   constructor( private http: HttpClient) { }
 
@@ -22,7 +31,7 @@ export class PaisService {
   buscarPais( query: string ): Observable<Country[]> {
     const url = `${this.baseURL}/name/${query}`;
 
-    return this.http.get<Country[]>(url);
+    return this.http.get<Country[]>(url, { params: this.getHttpParams });
   }
 
   /**
@@ -32,7 +41,7 @@ export class PaisService {
    */
   buscarCapital( query: string ): Observable<Country[]> {
     const url = `${this.baseURL}/capital/${query}`;
-    return this.http.get<Country[]>(url);
+    return this.http.get<Country[]>(url, { params: this.getHttpParams });
   }
 
   /**
@@ -52,7 +61,11 @@ export class PaisService {
    */
   buscarRegion( region: string ): Observable<Country[]> {
     const url = `${ this.baseURL }/region/${ region }`;
-    return this.http.get<Country[]>(url);
+
+    return this.http.get<Country[]>(url, { params: this.getHttpParams})
+      .pipe(
+        tap( console.log )
+      );
   }
 
 }
