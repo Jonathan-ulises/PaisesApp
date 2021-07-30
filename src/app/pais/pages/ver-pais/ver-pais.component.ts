@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from "rxjs/operators";
+import { switchMap, tap } from "rxjs/operators";
+import { Country } from '../../interfaces/pais.interface';
 
 import { PaisService } from '../../services/pais.service';
 
@@ -11,6 +12,8 @@ import { PaisService } from '../../services/pais.service';
   ]
 })
 export class VerPaisComponent implements OnInit {
+
+  pais!: Country;
 
   constructor( 
     private activatedRoute: ActivatedRoute,
@@ -35,14 +38,17 @@ export class VerPaisComponent implements OnInit {
     Este operador (el switchMap) forma part de un pipe del observable de ActivatedRoute.
     en la parte del subscribe del activedRoute, la respuesta del observable es la que retorna la consulta del observable
     disparado (el segundo observable del SwitchMap) del switchMap, que es la informacion de pais consultada por codigo.
+
+    El operador tap dispara un efecto secundario.
+    El tap en este caso imprime en pantalla con el console.log la respuesta del segundo observable del
+    switchmap, esto al momento de recibir algo.
     */
     this.activatedRoute.params
       .pipe(
-        switchMap( ({ id })  => this.paisService.getPaisPorCodigoAlpha( id ))
+        switchMap( ({ id })  => this.paisService.getPaisPorCodigoAlpha( id )),
+        tap( console.log )
       )
-      .subscribe( resp => {
-        console.log(resp)
-      });
+      .subscribe( pais => this.pais = pais);
   }
 
 }
