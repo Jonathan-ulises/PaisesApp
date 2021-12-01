@@ -1,21 +1,26 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { PorCapitalComponent } from "./pais/pages/por-capital/por-capital.component";
-import { PorPaisComponent } from "./pais/pages/por-pais/por-pais.component";
-import { PorRegionComponent } from "./pais/pages/por-region/por-region.component";
+import { UsuarioPublicoComponent } from "./pais/pages/usuario-publico/usuario-publico.component";
+import { RegistroComponent } from "./pais/pages/registrar/registrar.component";
 import { VerPaisComponent } from "./pais/pages/ver-pais/ver-pais.component";
+import { UsuarioInternoComponent } from './pais/pages/usuario-interno/usuario-interno.component';
 
 //Lista de rutas
 const routes: Routes = [
     {
         //Configuracion basica para una ruta (ruta principal)
         path: '',
-        component: PorPaisComponent,
+        component: UsuarioPublicoComponent,
         pathMatch: 'full'
     },
     {
-        path: 'region',
-        component: PorRegionComponent
+        path: 'interno',
+        component: UsuarioInternoComponent
+    },
+    {
+        path: 'registro',
+        component: RegistroComponent
     },
     {
         path: 'capital',
