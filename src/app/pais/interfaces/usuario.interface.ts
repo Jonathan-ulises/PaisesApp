@@ -12,8 +12,8 @@ export interface UsuarioInt {
 }
 
 export interface UsuarioRegistro {
-    nom?: string,
-    userN?: string,
-    email?: string,
-    fechaN?: string
+    nom: string,
+    userN: string,
+    email: string,
+    fechaN: string
 }

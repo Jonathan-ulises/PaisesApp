@@ -15,7 +15,12 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class RegistroComponent {
 
-  usuarioR: UsuarioRegistro = {};
+  usuarioR: UsuarioRegistro = {
+    nom: '',
+    userN: '',
+    email: '',
+    fechaN: 'dd/mm/yyyy'
+  };
 
   constructor(private service: UsuarioService) { }
 
@@ -23,13 +28,14 @@ export class RegistroComponent {
     // this.service.registrarUsuario(this.usuarioR).subscribe(resp => {
     //   console.log(resp)
     // });
-    console.log(this.generarFecha(this.usuarioR.fechaN!))
+    console.log(this.usuarioR);
+    this.generarFecha(this.usuarioR.fechaN);
   }
 
   generarFecha(fecha: string): string {
     let yyyy = fecha.substring(0, 4);
-    let mm = fecha.substring(4,5);
-    let dd = fecha.substring(5);
+    let mm = fecha.substring(5,7);
+    let dd = fecha.substring(8);
 
     console.log(yyyy);
     console.log(mm);
