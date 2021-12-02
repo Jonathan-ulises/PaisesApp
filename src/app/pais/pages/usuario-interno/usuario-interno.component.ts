@@ -16,12 +16,24 @@ import { UsuarioService } from '../../services/usuario.service';
 export class UsuarioInternoComponent implements OnInit {
 
   usuarios: UsuarioInt[] = [];
+  id: number = 0;
 
   constructor( private service: UsuarioService) { }
 
   ngOnInit(): void {
+    this.consultarUsuarios();
+  }
+
+  buscarUsuarioPun() {
+    this.service.srchUsuarioInterno(this.id).subscribe((resp) => {
+      this.usuarios = resp;
+    }, (err) => {console.log(err)});
+  }
+
+  consultarUsuarios() {
     this.service.getUsuarioInterno().subscribe((resp) => {
       this.usuarios = resp;
-    }, (err) => {console.log(err)})
+      this.id = 0;
+    }, (err) => {console.log(err)});
   }
 }

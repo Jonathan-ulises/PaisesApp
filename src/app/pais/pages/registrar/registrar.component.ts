@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UsuarioRegistro } from '../../interfaces/usuario.interface';
 import { UsuarioService } from '../../services/usuario.service';
 import { RegistroHelper } from './registro-helper';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -26,10 +27,30 @@ export class RegistroComponent {
     if (this.helper.validarCampos(this.usuarioR)) {
       this.usuarioR.fechaN = this.helper.generarFecha(this.usuarioR.fechaN);
       this.service.registrarUsuario(this.usuarioR).subscribe(resp => {
-        console.log(resp)
-      })
+        if(resp.result != null) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Registro Exitoso'
+          });
+        }
+        if(resp.error.length > 0) {
+          let msj = '';
+          resp.error.forEach((e) => {
+            msj = msj.concat(` - ${e} -`);
+          })
+          Swal.fire({
+            icon: 'error',
+            title: 'Ha ocurrido un error',
+            text: msj
+          });
+        }
+      });
     } else {
-      console.log('faltan campos')
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text: 'Rellene todos los campos del formulario'
+      });
     }
   }
 

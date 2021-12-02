@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { UsuarioActualizacion } from '../../interfaces/usuario.interface';
 import { UsuarioService } from '../../services/usuario.service';
 import { ActualizarHelper } from './actualizar-helper';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-actualizar',
@@ -24,7 +25,29 @@ export class ActualizarComponent {
   actualizar(){
     if(this.helper.validarCampos(this.usuarioA)) {
       this.service.actualizarUsuario(this.usuarioA).subscribe(resp => {
-        console.log(resp);
+        if(resp.result != null) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Actualizacion Exitosa'
+          });
+        }
+        if(resp.error.length > 0) {
+          let msj = '';
+          resp.error.forEach((e) => {
+            msj = msj.concat(` - ${e} -`);
+          })
+          Swal.fire({
+            icon: 'error',
+            title: 'Ha ocurrido un error',
+            text: msj
+          });
+        }
+      });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Ha ocurrido un error',
+        text: 'Rellene todos los campos del formulario'
       });
     }
   }

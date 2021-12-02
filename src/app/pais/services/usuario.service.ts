@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Response } from '../interfaces/response.interface';
 import { UsuarioInt, UsuarioPub, UsuarioRegistro, UsuarioActualizacion } from '../interfaces/usuario.interface';
 
 @Injectable({
@@ -15,15 +16,27 @@ export class UsuarioService {
     return this.http.get<UsuarioPub[]>(`${this.baseURL}/getAllUsuarioPub`);
   }
 
+  srchUsuarioPublico(id: number): Observable<UsuarioPub[]> {
+    const params = new HttpParams();
+    params.set('id', id);
+    return this.http.get<UsuarioPub[]>(`${this.baseURL}/getUsuarioPub/${id}`);
+  }
+
   getUsuarioInterno(): Observable<UsuarioInt[]>{
     return this.http.get<UsuarioInt[]>(`${this.baseURL}/getAllUsuarioInt`);
   }
 
-  registrarUsuario(usuario: UsuarioRegistro): Observable<String> {
-    return this.http.post<string>(`${this.baseURL}/registrar`, usuario);
+  srchUsuarioInterno(id: number): Observable<UsuarioPub[]> {
+    const params = new HttpParams();
+    params.set('id', id);
+    return this.http.get<UsuarioPub[]>(`${this.baseURL}/getUsuarioInt/${id}`);
   }
 
-  actualizarUsuario(usuario: UsuarioActualizacion): Observable<String> {
-    return this.http.put<string>(`${this.baseURL}/actualizar`, usuario);
+  registrarUsuario(usuario: UsuarioRegistro): Observable<Response> {
+    return this.http.post<Response>(`${this.baseURL}/registrar`, usuario);
+  }
+
+  actualizarUsuario(usuario: UsuarioActualizacion): Observable<Response> {
+    return this.http.put<Response>(`${this.baseURL}/actualizar`, usuario);
   }
 }

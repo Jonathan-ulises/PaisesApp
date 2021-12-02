@@ -1,27 +1,43 @@
 <div class="animate__animated animate__fadeInDown animate__faster">
-    <h2>Usuarios Interno</h2>
-    <hr>
+  <h2>Usuarios Interno</h2>
+  <hr>
+
+  <div class="row">
+    <form (ngSubmit)="buscarUsuarioPun()" class="row">
+      <div class="col-1">
+        <label for="staticID" class="visually-hidden">ID</label>
+        <input type="text" readonly class="form-control-plaintext" id="staticID" value="ID">
+      </div>
+      <div class="col-auto mb-3">
+        <input type="number" class="form-control" id="ID" name="id" name="id" [(ngModel)]="id">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+        <button type="button" (click)="consultarUsuarios()" class="btn btn-secondary ms-2"><i class="fas fa-redo"></i></button>
+      </div>
+    </form>
     
     <div class="row">
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Nombre de Usuario</th>
-                <th scope="col">Fecha de Nacimiento</th>
-                <th scope="col">Correo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let usu of usuarios">
-                <th scope="row">{{ usu.id }}</th>
-                <td>{{usu.nombre}}</td>
-                <td>{{usu.userName}}</td>
-                <td>{{usu.fechaNacimiento}}</td>
-                <td>{{usu.correo}}</td>
-              </tr>
-            </tbody>
-          </table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Nombre de Usuario</th>
+            <th scope="col">Fecha de Nacimiento</th>
+            <th scope="col">Correo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usu of usuarios">
+            <th scope="row">{{ usu.id }}</th>
+            <td>{{usu.nombre}}</td>
+            <td>{{usu.userName}}</td>
+            <td>{{usu.fechaNacimiento}}</td>
+            <td>{{usu.correo}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>

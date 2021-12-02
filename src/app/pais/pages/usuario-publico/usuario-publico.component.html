@@ -1,28 +1,40 @@
 <div class="animate__animated animate__fadeInDown animate__faster">
-    <h2>Usuarios Publicos</h2>
-    <hr>
-    
-    <div class="row">
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Nombre de Usuario</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let usu of usuarios">
-                <th scope="row">{{usu.id}}</th>
-                <td>{{usu.userN}}</td>
-              </tr>
-            </tbody>
-          </table>
-    </div>
-</div>
+  <h2>Usuarios Publicos</h2>
+  <hr>
 
-<!-- <div *ngIf="paises.length > 0"
-     class="row">
-    <div class="col">
-        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+  <div class="row">
+    <form (ngSubmit)="buscarUsuarioPun()" class="row">
+      <div class="col-1">
+        <label for="staticID" class="visually-hidden">ID</label>
+        <input type="text" readonly class="form-control-plaintext" id="staticID" value="ID">
+      </div>
+      <div class="col-auto mb-3">
+
+        <input type="number" class="form-control" id="ID" name="id" [(ngModel)]="id">
+      </div>
+      <!-- BUSCAR -->
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+        <button type="button" (click)="consultarUsuarios()" class="btn btn-secondary ms-2"><i class="fas fa-redo"></i></button>
+      </div>
+    </form>
+
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre de Usuario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usu of usuarios">
+            <th scope="row">{{usu.id}}</th>
+            <td>{{usu.userN}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-</div> -->
+
+  </div>
+</div>
