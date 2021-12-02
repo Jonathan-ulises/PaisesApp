@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UsuarioInt, UsuarioPub, UsuarioRegistro } from '../interfaces/usuario.interface';
+import { UsuarioInt, UsuarioPub, UsuarioRegistro, UsuarioActualizacion } from '../interfaces/usuario.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,9 @@ export class UsuarioService {
 
   registrarUsuario(usuario: UsuarioRegistro): Observable<String> {
     return this.http.post<string>(`${this.baseURL}/registrar`, usuario);
+  }
+
+  actualizarUsuario(usuario: UsuarioActualizacion): Observable<String> {
+    return this.http.put<string>(`${this.baseURL}/actualizar`, usuario);
   }
 }

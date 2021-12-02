@@ -1,48 +1,37 @@
 import { Component } from '@angular/core';
 import { UsuarioRegistro } from '../../interfaces/usuario.interface';
 import { UsuarioService } from '../../services/usuario.service';
+import { RegistroHelper } from './registro-helper';
 
 @Component({
   selector: 'app-registro',
-  templateUrl: './registrar.component.html',
-  styles: [
-    `
-      button {
-        margin-right: 5px;
-      }
-    `
-  ]
+  templateUrl: './registrar.component.html'
 })
 export class RegistroComponent {
+
+  helper: RegistroHelper;
 
   usuarioR: UsuarioRegistro = {
     nom: '',
     userN: '',
     email: '',
-    fechaN: 'dd/mm/yyyy'
+    fechaN: ''
   };
 
-  constructor(private service: UsuarioService) { }
+  constructor(private service: UsuarioService) {
+    this.helper = new RegistroHelper();
+  }
 
   registrar() {
-    // this.service.registrarUsuario(this.usuarioR).subscribe(resp => {
-    //   console.log(resp)
-    // });
-    console.log(this.usuarioR);
-    this.generarFecha(this.usuarioR.fechaN);
+    if (this.helper.validarCampos(this.usuarioR)) {
+      this.usuarioR.fechaN = this.helper.generarFecha(this.usuarioR.fechaN);
+      this.service.registrarUsuario(this.usuarioR).subscribe(resp => {
+        console.log(resp)
+      })
+    } else {
+      console.log('faltan campos')
+    }
   }
 
-  generarFecha(fecha: string): string {
-    let yyyy = fecha.substring(0, 4);
-    let mm = fecha.substring(5,7);
-    let dd = fecha.substring(8);
 
-    console.log(yyyy);
-    console.log(mm);
-    console.log(dd);
-
-    let nuevoFormato = `${dd}/${mm}/${yyyy}`
-
-    return nuevoFormato;
-  }
 }

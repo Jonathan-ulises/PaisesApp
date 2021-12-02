@@ -1,9 +1,0 @@
-<!-- El atributo autocomplete activa o desactiva esta funcion -->
-<form (ngSubmit)="buscar()" autocomplete="off">
-    <input type="text" 
-           name="termino"
-           class="form-control"
-           [(ngModel)]="query"
-           (input)="teclaPresionada()"
-           [placeholder]="placeholder"/>
-</form>

@@ -1,0 +1,25 @@
+<div class="animate__animated animate__fadeInDown animate__faster">
+    <div class="row">
+        <h3>Actualizacion de Usuario</h3>
+    </div>
+    <hr>
+    <div class="row">
+        <form (ngSubmit)="actualizar()">
+            <div class="mb-3">
+                <label for="ID" class="form-label">ID</label>
+                <input type="number" class="form-control" id="ID" name="id" [(ngModel)]="usuarioA.id">
+            </div>
+            <div class="mb-3">
+                <label for="user" class="form-label">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="user" name="userName" [(ngModel)]="usuarioA.userN">
+            </div>
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="correo" name="correo" [(ngModel)]="usuarioA.email">
+            </div>
+            <div class="d-grid gap-2 mt-5">
+                <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+        </form>
+    </div>
+</div>

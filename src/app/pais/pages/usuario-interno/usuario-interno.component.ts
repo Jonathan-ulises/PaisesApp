@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Country } from '../../interfaces/pais.interface';
 import { UsuarioInt } from '../../interfaces/usuario.interface';
-import { PaisService } from '../../services/pais.service';
 import { UsuarioService } from '../../services/usuario.service';
 
 @Component({

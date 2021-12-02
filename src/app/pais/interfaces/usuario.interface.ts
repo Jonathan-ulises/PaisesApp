@@ -17,3 +17,9 @@ export interface UsuarioRegistro {
     email: string,
     fechaN: string
 }
+
+export interface UsuarioActualizacion {
+    id: number,
+    userN: string,
+    email: string
+}
