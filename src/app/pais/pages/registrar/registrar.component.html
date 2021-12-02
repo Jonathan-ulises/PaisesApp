@@ -1,28 +1,28 @@
 <div class="animate__animated animate__fadeInDown animate__faster">
     <div class="row">
-        <h3>Registro de Usuario</h3>
+        <h3 class="text-white">Registro de Usuario</h3>
     </div>
     <hr>
     <div class="row">
         <form (ngSubmit)="registrar()">
             <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="nombre" class="form-label text-white">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuarioR.nom">
             </div>
             <div class="mb-3">
-                <label for="pass" class="form-label">Nombre de Usuario</label>
+                <label for="pass" class="form-label text-white">Nombre de Usuario</label>
                 <input type="text" class="form-control" id="pass" name="nombreUsuario" [(ngModel)]="usuarioR.userN">
             </div>
             <div class="mb-3">
-                <label for="correo" class="form-label">Correo</label>
+                <label for="correo" class="form-label text-white">Correo</label>
                 <input type="email" class="form-control" id="correo" name="correo" [(ngModel)]="usuarioR.email">
             </div>
             <div class="mb-3">
-                <label for="fecha" class="form-label">Fecha de nacimiento</label>
+                <label for="fecha" class="form-label text-white">Fecha de nacimiento</label>
                 <input type="date" class="form-control" id="fecha" name="facha" [(ngModel)]="usuarioR.fechaN">
             </div>
             <div class="d-grid gap-2 mt-5">
-                <button type="submit" class="btn btn-primary">Registrar<i class="fas fa-save ms-3"></i></button>
+                <button type="submit" class="btn btn-warning fw-bold">Registrar<i class="fas fa-save ms-3"></i></button>
             </div>
         </form>
     </div>

@@ -26,10 +26,10 @@ export class UsuarioService {
     return this.http.get<UsuarioInt[]>(`${this.baseURL}/getAllUsuarioInt`);
   }
 
-  srchUsuarioInterno(id: number): Observable<UsuarioPub[]> {
+  srchUsuarioInterno(id: number): Observable<UsuarioInt[]> {
     const params = new HttpParams();
     params.set('id', id);
-    return this.http.get<UsuarioPub[]>(`${this.baseURL}/getUsuarioInt/${id}`);
+    return this.http.get<UsuarioInt[]>(`${this.baseURL}/getUsuarioInt/${id}`);
   }
 
   registrarUsuario(usuario: UsuarioRegistro): Observable<Response> {

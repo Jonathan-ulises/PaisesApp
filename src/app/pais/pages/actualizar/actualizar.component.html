@@ -1,24 +1,24 @@
 <div class="animate__animated animate__fadeInDown animate__faster">
     <div class="row">
-        <h3>Actualizacion de Usuario</h3>
+        <h3 class="text-white">Actualizacion de Usuario</h3>
     </div>
     <hr>
     <div class="row">
         <form (ngSubmit)="actualizar()">
             <div class="mb-3">
-                <label for="ID" class="form-label">ID</label>
+                <label for="ID" class="form-label text-white">ID</label>
                 <input type="number" class="form-control" id="ID" name="id" [(ngModel)]="usuarioA.id">
             </div>
             <div class="mb-3">
-                <label for="user" class="form-label">Nombre de Usuario</label>
+                <label for="user" class="form-label text-white">Nombre de Usuario</label>
                 <input type="text" class="form-control" id="user" name="userName" [(ngModel)]="usuarioA.userN">
             </div>
             <div class="mb-3">
-                <label for="correo" class="form-label">Correo</label>
+                <label for="correo" class="form-label text-white">Correo</label>
                 <input type="email" class="form-control" id="correo" name="correo" [(ngModel)]="usuarioA.email">
             </div>
             <div class="d-grid gap-2 mt-5">
-                <button type="submit" class="btn btn-primary">Actualizar<i class="fas fa-upload ms-3"></i></button>
+                <button type="submit" class="btn btn-warning fw-bold">Actualizar<i class="fas fa-upload ms-3"></i></button>
             </div>
         </form>
     </div>

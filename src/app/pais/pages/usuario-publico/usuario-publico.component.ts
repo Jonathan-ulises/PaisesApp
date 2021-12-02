@@ -5,13 +5,7 @@ import { UsuarioService } from '../../services/usuario.service';
 @Component({
   selector: 'app-usuario-publico',
   templateUrl: './usuario-publico.component.html',
-  styles: [
-    `
-      li {
-        cursor: pointer;
-      }
-    `
-  ]
+  styleUrls: ['./usuario-publico.component.css']
 })
 export class UsuarioPublicoComponent implements OnInit{
 

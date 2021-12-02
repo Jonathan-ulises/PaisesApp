@@ -25,7 +25,6 @@ export class RegistroComponent {
 
   registrar() {
     if (this.helper.validarCampos(this.usuarioR)) {
-      this.usuarioR.fechaN = this.helper.generarFecha(this.usuarioR.fechaN);
       this.service.registrarUsuario(this.usuarioR).subscribe(resp => {
         if(resp.result != null) {
           Swal.fire({

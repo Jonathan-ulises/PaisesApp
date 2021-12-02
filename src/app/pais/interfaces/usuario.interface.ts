@@ -4,11 +4,11 @@ export interface UsuarioPub {
 }
 
 export interface UsuarioInt {
-    id?: number,
-    nombre?: string,
-    userName?: string,
-    fechaNacimiento?: string,
-    correo?: string
+    id: number,
+    nombre: string,
+    userName: string,
+    fechaNacimiento: string,
+    correo: string
 }
 
 export interface UsuarioRegistro {

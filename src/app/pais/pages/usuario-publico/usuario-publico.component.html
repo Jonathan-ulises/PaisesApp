@@ -1,12 +1,12 @@
 <div class="animate__animated animate__fadeInDown animate__faster">
-  <h2>Usuarios Publicos</h2>
+  <h2 class="text-white">Usuarios Publicos</h2>
   <hr>
 
   <div class="row">
     <form (ngSubmit)="buscarUsuarioPun()" class="row">
       <div class="col-1">
         <label for="staticID" class="visually-hidden">ID</label>
-        <input type="text" readonly class="form-control-plaintext" id="staticID" value="ID">
+        <input type="text" readonly class="form-control-plaintext text-white fw-bold" id="staticID" value="ID">
       </div>
       <div class="col-auto mb-3">
 
@@ -22,15 +22,15 @@
     <div class="row">
       <table class="table">
         <thead>
-          <tr>
+          <tr class="table-light">
             <th scope="col">ID</th>
             <th scope="col">Nombre de Usuario</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let usu of usuarios">
-            <th scope="row">{{usu.id}}</th>
-            <td>{{usu.userN}}</td>
+            <td class="text-white">{{usu.id}}</td>
+            <td class="text-white">{{usu.userN}}</td>
           </tr>
         </tbody>
       </table>
